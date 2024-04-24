@@ -17,7 +17,12 @@ doc = DocumentManager.Instance.CurrentDBDocument
 
 TransactionManager.Instance.EnsureInTransaction(doc)
 
-element.LookupParameter("Comments").Set("value")
+# The "Value" data type must be in accordance with the "Parameter" data type that we want to assign the value to it.
+# for example if we want to put the ID of element, we must convert its value to String.
+# element_id = element.Id.IntegerValue
+# element_id = str(element.Id)
+
+element.LookupParameter("Comments").Set("value")    # for example, "Comments" parameter accepts String values.
 
 TransactionManager.Instance.TransactionTaskDone()
 
